@@ -9,10 +9,6 @@ var {User} = require('./models/user');
 var app = express();
 const port = process.env.PORT || 3000;
 
-if(process.env.PORT) {
-    process.env.MONGODB_URI = "mongodb://system:manager@ds121099.mlab.com:21099/mdskk3-mongolab/TodoApp";
-}
-
 app.use(bodyParser.json());
 
 app.post('/todos', (req, res) => {
