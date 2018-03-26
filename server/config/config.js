@@ -1,12 +1,13 @@
 var env = process.env.NODE_ENV || 'development';
-
 console.log(`*******${env}*******`)
 
 var db = {
   dev : 'mongodb://localhost:27017/TodoApp',
   test : 'mongodb://localhost:27017/TodoAppTest',
-  mlab : 'mongodb://system:manager@ds121099.mlab.com:21099/mdskk3-mongolab/TodoApp'
+  mlab : 'mongodb://system:manager@ds121099.mlab.com:21099/mdskk3-mongolab'
 };
+//  mlab : 'mongodb://system:manager@ds121099.mlab.com:21099/mdskk3-mongolab/TodoApp'
+
 if(process.env.PORT){
   process.env.MONGODB_URI = db.mlab;
 } else {
