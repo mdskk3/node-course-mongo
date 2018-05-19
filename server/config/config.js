@@ -8,16 +8,26 @@ var db = {
 };
 //  mlab : 'mongodb://system:manager@ds121099.mlab.com:21099/mdskk3-mongolab/TodoApp'
 
-if(process.env.PORT){
-  process.env.MONGODB_URI = db.mlab;
-} else {
-  process.env.PORT = 3000;
-  if(env === 'development'){
-    process.env.MONGODB_URI = db.dev;
-  } else if (env === 'test'){
-    process.env.MONGODB_URI = db.test;
-  }
+if(env === 'development' || env === 'test'){
+  var config = require('./config.json');
+  var envConfig = config[env];
+
+  Object.keys(envConfig).forEach((key) => {
+    process.env[key] = envConfig[key];
+  });
 }
+
+//Without Config.json
+// if(process.env.PORT){
+//   process.env.MONGODB_URI = db.mlab;
+// } else {
+//   process.env.PORT = 3000;
+//   if(env === 'development'){
+//     process.env.MONGODB_URI = db.dev;
+//   } else if (env === 'test'){
+//     process.env.MONGODB_URI = db.test;
+//   }
+// }
 
 // Base Code
 // if (env ==='development'){
